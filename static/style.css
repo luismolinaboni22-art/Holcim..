@@ -1,107 +1,150 @@
-/* -----------------------------------------------------
-   ESTILO CORPORATIVO HOLCIM COSTA RICA
-------------------------------------------------------*/
-
 body {
-    background: #f4f4f4;
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: "Segoe UI", Arial;
+    background: #f4f5f7;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out; /* animación de carga */
 }
 
-/* Contenedor principal */
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: 40px auto;
-    background: white;
+/* ===== ANIMACIONES GLOBALES ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes floatCard {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* ===== SIDEBAR ESTILO HOLCIM ===== */
+.sidebar {
+    width: 260px;
+    background: #021F3D;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+    animation: slideLeft 0.8s ease-out; /* animación sidebar */
+}
+
+.sidebar img {
+    width: 150px;
+    margin: 0 auto 25px auto;
+    display: block;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-left: 4px solid transparent;
+    transition: 0.3s;
+    font-weight: 500;
+    position: relative;
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+.sidebar a:hover {
+    background: #0090D0;
+    border-left: 4px solid #6CCB3C;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+}
+
+.logout {
+    margin-top: auto;
+    background: #990000;
+    text-align: center;
+    font-weight: bold;
+}
+
+.logout:hover {
+    background: #7a0000 !important;
+}
+
+/* ===== MAIN ===== */
+.main {
+    flex: 1;
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow-y: auto;
+    animation: fadeIn 1.4s ease-out;
 }
 
-/* Títulos */
-h1 {
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #021F3D;
+    animation: fadeIn 1.8s ease;
+}
+
+/* ===== TARJETAS ===== */
+.cards {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.20);
+    transition: 0.25s;
+    border-top: 6px solid #0090D0;
+    animation: floatCard 6s ease-in-out infinite; /* animación continua */
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 46px;
+    font-weight: bold;
+    color: #0090D0;
     text-align: center;
-    color: #005baa;
-    margin-bottom: 20px;
 }
 
-h2 {
+.card p {
     text-align: center;
-    color: #008f39;
-}
-
-label {
+    margin-top: 10px;
+    font-size: 18px;
     font-weight: bold;
     color: #333;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-button, .btn {
-    display: inline-block;
-    background: #005baa;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-}
-
-button:hover, .btn:hover {
-    background: #004b8c;
-}
-
-/* Tarjetas de confirmación */
-.box {
+/* ===== SECCIÓN RESUMEN ===== */
+.section {
+    margin-top: 40px;
+    padding: 25px;
     background: white;
-    padding: 25px 35px;
-    border-radius: 12px;
-    max-width: 450px;
-    margin: 80px auto;
-    text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-left: 6px solid #6CCB3C;
+    animation: fadeIn 2.2s ease-out;
 }
 
-/* Información en formato clave : valor */
-.info {
-    text-align: left;
-    margin-top: 20px;
-    font-size: 16px;
+.section h3 {
+    margin: 0 0 15px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #021F3D;
 }
 
-.info p {
-    margin: 6px 0;
-}
-
-/* Menú principal */
-.menu-btn {
-    display: block;
-    background: #e62222;
-    margin-top: 15px;
-}
-
-.menu-btn:hover {
-    background: #c81c1c;
-}
-
-/* Botón secundario */
-.secondary-btn {
-    background: #018a44;
-}
-
-.secondary-btn:hover {
-    background: #01783a;
-}
 
