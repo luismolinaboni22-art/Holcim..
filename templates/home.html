@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <title>Dashboard – Holcim Costa Rica</title>
 
-    <!-- ICONS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
     <style>
         body {
             margin: 0;
@@ -14,13 +11,12 @@
             background: #f4f5f7;
             display: flex;
             height: 100vh;
-            overflow: hidden;
         }
 
-        /* ========== SIDEBAR CORPORATIVO ========== */
+        /* ===== SIDEBAR ESTILO HOLCIM ===== */
         .sidebar {
             width: 260px;
-            background: #021F3D; /* azul institucional */
+            background: #021F3D; /* Azul corporativo oscuro Holcim */
             color: white;
             display: flex;
             flex-direction: column;
@@ -29,25 +25,9 @@
         }
 
         .sidebar img {
-            width: 155px;
+            width: 150px;
+            margin: 0 auto 25px auto;
             display: block;
-            margin: 0 auto;
-        }
-
-        .sidebar h4 {
-            text-align: center;
-            margin-top: 10px;
-            font-weight: 300;
-            opacity: 0.8;
-            letter-spacing: 1px;
-        }
-
-        .menu-title {
-            margin: 35px 0 10px 25px;
-            font-size: 13px;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: #6CCB3C;
         }
 
         .sidebar a {
@@ -56,20 +36,18 @@
             text-decoration: none;
             font-size: 16px;
             border-left: 4px solid transparent;
-            display: flex;
-            align-items: center;
-            gap: 12px;
             transition: 0.3s;
+            font-weight: 500;
         }
 
         .sidebar a:hover {
-            background: #0090D0;
-            border-left: 4px solid #6CCB3C;
+            background: #0090D0; /* Azul claro Holcim */
+            border-left: 4px solid #6CCB3C; /* Verde Holcim */
         }
 
         .logout {
             margin-top: auto;
-            background: #990000;
+            background: #990000; /* logout siempre rojo */
             text-align: center;
         }
 
@@ -77,20 +55,20 @@
             background: #7a0000 !important;
         }
 
-        /* ========== MAIN ========== */
+        /* ===== MAIN ===== */
         .main {
             flex: 1;
-            padding: 35px;
+            padding: 30px;
             overflow-y: auto;
         }
 
         .title {
-            font-size: 30px;
+            font-size: 28px;
             font-weight: bold;
             color: #021F3D;
         }
 
-        /* ========== TARJETAS ========== */
+        /* ===== TARJETAS ===== */
         .cards {
             margin-top: 35px;
             display: grid;
@@ -104,7 +82,7 @@
             border-radius: 14px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             transition: 0.25s;
-            border-top: 6px solid #0090D0;
+            border-top: 6px solid #0090D0; /* banda azul Holcim */
         }
 
         .card:hover {
@@ -116,15 +94,8 @@
             margin: 0;
             font-size: 46px;
             font-weight: bold;
-            color: #0090D0;
+            color: #0090D0; /* azul claro */
             text-align: center;
-        }
-
-        .card-icon {
-            text-align: center;
-            font-size: 40px;
-            margin-bottom: 10px;
-            color: #6CCB3C;
         }
 
         .card p {
@@ -135,14 +106,14 @@
             color: #333;
         }
 
-        /* ========== SECCIONES ========== */
+        /* ===== SECTIONS ===== */
         .section {
             margin-top: 40px;
             padding: 25px;
             background: white;
             border-radius: 14px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border-left: 6px solid #6CCB3C;
+            border-left: 6px solid #6CCB3C; /* verde Holcim */
         }
 
         .section h3 {
@@ -151,7 +122,6 @@
             font-weight: bold;
             color: #021F3D;
         }
-
     </style>
 </head>
 
@@ -159,19 +129,15 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
         <img src="/static/imagenes/holcim_logo.png" alt="Holcim Logo">
-        <h4>Control de Acceso</h4>
 
-        <div class="menu-title">Módulos</div>
+        <a href="/registro">Registrar Visitante</a>
+        <a href="/contratistas">Registrar Contratista</a>
+        <a href="/proveedores"> Registrar Proveedor</a>
+        <a href="/proveedores"> Extenciones Telefonicas</a>
+        <a href="/reportes">Reportes Históricos</a>
 
-        <a href="/registro"><i class="bi bi-person-plus"></i> Registrar Visitante</a>
-        <a href="/contratistas"><i class="bi bi-clipboard-check"></i> Registrar Contratista</a>
-        <a href="/proveedores"><i class="bi bi-truck"></i> Registrar Proveedor</a>
-        <a href="/extensiones"><i class="bi bi-telephone"></i> Extensiones Telefónicas</a>
-        <a href="/reportes"><i class="bi bi-file-earmark-bar-graph"></i> Reportes Históricos</a>
-
-        <a href="/logout" class="logout"><i class="bi bi-box-arrow-left"></i> Cerrar Sesión</a>
+        <a href="/logout" class="logout">Cerrar Sesión</a>
     </div>
 
     <!-- Main content -->
@@ -182,30 +148,26 @@
         <!-- Cards -->
         <div class="cards">
             <div class="card">
-                <div class="card-icon"><i class="bi bi-person-walking"></i></div>
                 <h2>{{ visitantes_dentro }}</h2>
                 <p>Visitantes dentro</p>
             </div>
 
             <div class="card">
-                <div class="card-icon"><i class="bi bi-people"></i></div>
                 <h2>{{ contratistas_dentro }}</h2>
                 <p>Contratistas dentro</p>
             </div>
 
             <div class="card">
-                <div class="card-icon"><i class="bi bi-buildings"></i></div>
                 <h2>{{ proveedores_dentro }}</h2>
                 <p>Proveedores dentro</p>
             </div>
         </div>
 
-        <!-- Resumen -->
         <div class="section">
             <h3>Resumen General</h3>
             <p>
                 Sistema de Control de Ingresos – Holcim Costa Rica.  
-                Monitorea en tiempo real el flujo de visitantes, contratistas y proveedores dentro de las instalaciones.
+                Aquí puedes monitorear en tiempo real la cantidad de personas dentro de las instalaciones.
             </p>
         </div>
 
@@ -213,4 +175,3 @@
 
 </body>
 </html>
-
