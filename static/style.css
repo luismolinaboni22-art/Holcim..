@@ -1,3 +1,9 @@
+<style>
+/* ¡IMPORTANTE! Prioridad alta a tu CSS */
+:root {
+    all: initial;
+    font-family: "Segoe UI", Arial !important;
+}
 body {
     margin: 0;
     font-family: "Segoe UI", Arial;
