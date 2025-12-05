@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta charset="UTF-8">
+    <title>Visitante Registrado</title>
+
+    <style>
+        body {
+            background: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            background: white;
+            padding: 25px 35px;
+            border-radius: 12px;
+            width: 450px;
+            margin: 80px auto;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #005baa;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #008f39;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        a.boton {
+            display: block;
+            margin-top: 25px;
+            padding: 12px;
+            background: #005baa;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a.boton:hover {
+            background: #004b8c;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="box">
+
+        <h1>Visitante Registrado</h1>
+        <h2>✔ Registro Exitoso</h2>
+
+        <div class="info">
+            <p><strong>Nombre:</strong> {{ visitante.nombre }}</p>
+            <p><strong>Cédula:</strong> {{ visitante.cedula }}</p>
+            <p><strong>Empresa:</strong> {{ visitante.empresa }}</p>
+            <p><strong>Responsable:</strong> {{ visitante.responsable }}</p>
+            <p><strong>Placa:</strong> {{ visitante.placa }}</p>
+            <p><strong>Motivo:</strong> {{ visitante.motivo }}</p>
+            <p><strong>Hora de ingreso:</strong> {{ visitante.hora_ingreso }}</p>
+        </div>
+
+        <a class="boton" href="/visitantes">⬅ Registrar otro</a>
+        <a class="boton" href="/"> Menú Principal</a>
+
+    </div>
+
+</body>
+</html>
+
+

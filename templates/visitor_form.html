@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registro de Visitantes - Holcim</title>
+
+<style>
+    /* ===== ESTILOS GENERALES ===== */
+    body { 
+        font-family: "Segoe UI", Arial; 
+        background: #EDF1F4; 
+        margin: 0; 
+        padding: 25px;
+    }
+
+    h1 { 
+        color: #003E70; 
+        text-align: center; 
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    /* ===== BOTÓN MENÚ ===== */
+    .menu-btn {
+        text-align: center;
+        margin-bottom: 18px;
+    }
+
+    .menu-btn button {
+        background: #005BAA;
+        color: white;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        transition: 0.25s;
+    }
+
+    .menu-btn button:hover {
+        background: #004B8C;
+        transform: translateY(-2px);
+    }
+
+    /* ===== FORMULARIO ===== */
+    form {
+        background: white;
+        padding: 22px;
+        border-radius: 12px;
+        max-width: 520px;
+        margin: 0 auto 25px auto;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 4px;
+        font-weight: 600;
+        color: #003E70;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #C4CDD5;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px 18px;
+        background: #0073B1;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+        transition: 0.3s;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+        background: #005BAA;
+        transform: translateY(-2px);
+    }
+
+    /* ===== TABLA ===== */
+    table {
+        width: 95%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    th {
+        background: #003E70; 
+        color: white;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #e3e3e3;
+        font-size: 14px;
+    }
+
+    tr:hover {
+        background: #F5F8FA;
+    }
+
+    .exit-form button {
+        background: #6BC048;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .exit-form button:hover {
+        background: #59A53C;
+    }
+
+</style>
+</head>
+
+<body>
+
+<h1>Registro de Visitantes – Holcim Costa Rica</h1>
+
+<div class="menu-btn">
+    <button onclick="location.href='/'">Menú Principal</button>
+</div>
+
+<form method="POST">
+    <label>Nombre del visitante:</label>
+    <input type="text" name="nombre" required>
+
+    <label>Cédula:</label>
+    <input type="text" name="cedula" required>
+
+    <label>Empresa:</label>
+    <input type="text" name="empresa" required>
+
+    <label>Persona a visitar:</label>
+    <input type="text" name="responsable" required>
+
+    <label>Motivo de la visita:</label>
+    <input type="text" name="motivo" required>
+
+    <label>Placa del vehículo:</label>
+    <input type="text" name="placa">
+
+    <button type="submit">Registrar Ingreso</button>
+</form>
+
+{% if visitors %}
+<table>
+    <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Cédula</th>
+        <th>Empresa</th>
+        <th>Responsable</th>
+        <th>Motivo</th>
+        <th>Placa</th>
+        <th>Hora Ingreso</th>
+        <th>Hora Salida</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for v in visitors %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ v.nombre }}</td>
+        <td>{{ v.cedula }}</td>
+        <td>{{ v.empresa }}</td>
+        <td>{{ v.responsable }}</td>
+        <td>{{ v.motivo }}</td>
+        <td>{{ v.placa }}</td>
+        <td>{{ v.hora_ingreso }}</td>
+        <td>{{ v.hora_salida or '-' }}</td>
+
+        <td>
+            {% if not v.hora_salida %}
+            <form class="exit-form" method="GET" action="{{ url_for('salida', index=loop.index0) }}">
+                <button type="submit">Dar Salida</button>
+            </form>
+            {% else %}
+                -
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+</body>
+</html>
+

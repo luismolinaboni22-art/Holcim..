@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta charset="UTF-8">
+    <title>Registro exitoso</title>
+</head>
+<body>
+
+<h2>Contratista registrado exitosamente</h2>
+
+<p><strong>Nombre:</strong> {{ contratista.nombre }}</p>
+<p><strong>Cédula:</strong> {{ contratista.cedula }}</p>
+<p><strong>Empresa:</strong> {{ contratista.empresa }}</p>
+<p><strong>Responsable:</strong> {{ contratista.responsable }}</p>
+<p><strong>Hora ingreso:</strong> {{ contratista.hora_ingreso }}</p>
+
+<br>
+<a href="/contratistas"><button>Registrar otro</button></a>
+<a href="/home"><button>Menú Principal</button></a>
+
+</body>
+</html>

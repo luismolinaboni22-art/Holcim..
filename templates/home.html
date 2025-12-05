@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard – Holcim Costa Rica</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial;
+            background: #f4f5f7;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* ===== SIDEBAR ESTILO HOLCIM ===== */
+        .sidebar {
+            width: 260px;
+            background: #021F3D; /* Azul corporativo oscuro Holcim */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 25px;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.2);
+        }
+
+        .sidebar img {
+            width: 150px;
+            margin: 0 auto 25px auto;
+            display: block;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border-left: 4px solid transparent;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .sidebar a:hover {
+            background: #0090D0; /* Azul claro Holcim */
+            border-left: 4px solid #6CCB3C; /* Verde Holcim */
+        }
+
+        .logout {
+            margin-top: auto;
+            background: #990000; /* logout siempre rojo */
+            text-align: center;
+        }
+
+        .logout:hover {
+            background: #7a0000 !important;
+        }
+
+        /* ===== MAIN ===== */
+        .main {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #021F3D;
+        }
+
+        /* ===== TARJETAS ===== */
+        .cards {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: 0.25s;
+            border-top: 6px solid #0090D0; /* banda azul Holcim */
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 46px;
+            font-weight: bold;
+            color: #0090D0; /* azul claro */
+            text-align: center;
+        }
+
+        .card p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            margin-top: 40px;
+            padding: 25px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-left: 6px solid #6CCB3C; /* verde Holcim */
+        }
+
+        .section h3 {
+            margin: 0 0 15px;
+            font-size: 21px;
+            font-weight: bold;
+            color: #021F3D;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="/static/imagenes/holcim_logo.png" alt="Holcim Logo">
+
+        <a href="/registro">Registrar Visitante</a>
+        <a href="/contratistas">Registrar Contratista</a>
+        <a href="/proveedores"> Registrar Proveedor</a>
+        <a href="/proveedores"> Extenciones Telefonicas</a>
+        <a href="/reportes">Reportes Históricos</a>
+
+        <a href="/logout" class="logout">Cerrar Sesión</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="main">
+
+        <div class="title">Dashboard Principal – Holcim Costa Rica</div>
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <h2>{{ visitantes_dentro }}</h2>
+                <p>Visitantes dentro</p>
+            </div>
+
+            <div class="card">
+                <h2>{{ contratistas_dentro }}</h2>
+                <p>Contratistas dentro</p>
+            </div>
+
+            <div class="card">
+                <h2>{{ proveedores_dentro }}</h2>
+                <p>Proveedores dentro</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Resumen General</h3>
+            <p>
+                Sistema de Control de Ingresos – Holcim Costa Rica.  
+                Aquí puedes monitorear en tiempo real la cantidad de personas dentro de las instalaciones.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

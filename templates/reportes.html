@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes Históricos – Holcim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        .header {
+            background: #005baa;
+            padding: 22px;
+            color: white;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            margin: 35px auto;
+        }
+
+        h2 {
+            color: #005baa;
+            margin-top: 40px;
+        }
+
+        .filter-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        th {
+            background: #005baa;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: #e6f0ff;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #005baa;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 40px 0;
+        }
+        .back-btn:hover {
+            background: #004b8c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    Reportes Históricos de Ingresos – Holcim Costa Rica
+</div>
+
+<div class="container">
+
+    <!-- Filtros -->
+    <div class="filter-box">
+        <label>Filtrar por fecha:</label><br>
+        Desde: <input type="date" id="fecha_inicio">
+        Hasta: <input type="date" id="fecha_fin">
+        <button onclick="filtrarTablas()">Aplicar Filtro</button>
+    </div>
+
+    <!-- VISITANTES -->
+    <h2>Visitantes</h2>
+    <table id="tablaVisitantes">
+        <tr>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Empresa</th>
+            <th>Responsable</th>
+            <th>Motivo</th>
+            <th>Placa</th>
+            <th>Hora de Ingreso</th>
+        </tr>
+
+        {% for v in visitantes %}
+        <tr>
+            <td>{{ v.nombre }}</td>
+            <td>{{ v.cedula }}</td>
+            <td>{{ v.empresa }}</td>
+            <td>{{ v.responsable }}</td>
+            <td>{{ v.motivo }}</td>
+            <td>{{ v.placa }}</td>
+            <td>{{ v.hora_ingreso }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- CONTRATISTAS -->
+    <h2>Contratistas</h2>
+    <table id="tablaContratistas">
+        <tr>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Empresa</th>
+            <th>Placa</th>
+            <th>Motivo</th>
+            <th>Responsable</th>
+            <th>Hora de Ingreso</th>
+        </tr>
+
+        {% for c in contratistas %}
+        <tr>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.cedula }}</td>
+            <td>{{ c.empresa }}</td>
+            <td>{{ c.placa }}</td>
+            <td>{{ c.motivo }}</td>
+            <td>{{ c.responsable }}</td>
+            <td>{{ c.hora_ingreso }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- PROVEEDORES -->
+    <h2>Proveedores</h2>
+    <table id="tablaProveedores">
+        <tr>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Empresa</th>
+            <th>Responsable</th>
+            <th>Motivo</th>
+            <th>Placa</th>
+            <th>Hora de Ingreso</th>
+        </tr>
+
+        {% for p in proveedores %}
+        <tr>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.cedula }}</td>
+            <td>{{ p.empresa }}</td>
+            <td>{{ p.responsable }}</td>
+            <td>{{ p.motivo }}</td>
+            <td>{{ p.placa }}</td>
+            <td>{{ p.hora_ingreso }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/home" class="back-btn">⬅ Volver al Menú Principal</a>
+</div>
+
+<script>
+function filtrarTablas() {
+    let inicio = document.getElementById("fecha_inicio").value;
+    let fin = document.getElementById("fecha_fin").value;
+
+    const tablas = ["tablaVisitantes", "tablaContratistas", "tablaProveedores"];
+
+    tablas.forEach(id => {
+        let rows = document.getElementById(id).rows;
+        for (let i = 1; i < rows.length; i++) {
+            let fecha = rows[i].cells[6].innerText.substring(0, 10);
+            if ((inicio && fecha < inicio) || (fin && fecha > fin)) {
+                rows[i].style.display = "none";
+            } else {
+                rows[i].style.display = "";
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>
+

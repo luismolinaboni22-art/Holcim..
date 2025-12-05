@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta charset="UTF-8">
+    <title>Proveedor Registrado</title>
+</head>
+<body>
+
+<h2>Proveedor registrado exitosamente</h2>
+
+<p><strong>Nombre:</strong> {{ proveedor.nombre }}</p>
+<p><strong>Cédula:</strong> {{ proveedor.cedula }}</p>
+<p><strong>Empresa:</strong> {{ proveedor.empresa }}</p>
+<p><strong>Responsable:</strong> {{ proveedor.responsable }}</p>
+<p><strong>Motivo:</strong> {{ proveedor.motivo }}</p>
+<p><strong>Hora ingreso:</strong> {{ proveedor.hora_ingreso }}</p>
+
+<br>
+<a href="/proveedores"><button>Registrar otro</button></a>
+<a href="/home"><button>Menú Principal</button></a>
+
+</body>
+</html>
